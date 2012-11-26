@@ -72,23 +72,21 @@
             </nav>
         </footer>
 
-        <article id="map"class="list indented scroll">
-            <ul>
-                <li data-icon="brand html5" class="green">
-                    <div class="right bubble green">1.65€</div>
-                    <strong>Gasolinera Repsol</strong>
-                    <small>Horario Lunes a Viernes 9:00 a 12:00</small>
-
-                </li>
-                <li data-icon="brand github-2" class="red">
-                    <div class="right bubble red">1.95€</div>
-                    <strong>Gasolinera Cepsa</strong>
-                    <small>Horario Lunes a Viernes 9:00 a 12:00</small>
-                </li>
-            </ul>
+        <article id="map">
         </article>
 
-        <article id="gas_stations">
+        <article id="gas_stations" class="list indented scroll">
+            <li data-icon="brand html5" class="green">
+                <div class="right bubble green">1.65€</div>
+                <strong>Gasolinera Repsol</strong>
+                <small>Horario Lunes a Viernes 9:00 a 12:00</small>
+
+            </li>
+            <li data-icon="brand github-2" class="red">
+                <div class="right bubble red">1.95€</div>
+                <strong>Gasolinera Cepsa</strong>
+                <small>Horario Lunes a Viernes 9:00 a 12:00</small>
+            </li>
         </article>
 
         <article id="settings">
@@ -114,13 +112,35 @@
             sugars: ['map']
         });
 
-        var _from = { latitude: 59.32522, longitude: 18.07002 };
+        var mapPosition;
 
-        Lungo.Sugar.GMap.init({
-            el: '#settings',
+        function geolocationOK(position) {
+            mapPosition = { latitude: position.coords.latitude, 
+                            longitude: position.coords.longitude };
+
+            inicializarGMap();
+        }
+
+        function geolocationError() {
+            mapPosition = { latitude: 38.3403, longitude: -0.4929 };
+            inicializarGMap();
+        }
+
+        navigator.geolocation.getCurrentPosition(geolocationOK, geolocationError);
+
+        function inicializarGMap() {
+            Lungo.Sugar.GMap.init({
+                el: '#map',
+                zoom: 14,
+                center: mapPosition
+            });
+        }
+
+        /*Lungo.Sugar.GMap.image({
+            el: '#map',
             zoom: 14,
             center: _from
-        });
+        });*/
 
     </script>
 </body>

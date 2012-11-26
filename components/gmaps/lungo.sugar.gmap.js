@@ -14,7 +14,7 @@ Lungo.Sugar.GMap = (function(lng, undefined) {
         sensor: false,
         mobile: true
     };
-    var GMAPS_STATIC_URL = 'http://maps.google.com/maps/api/staticmap?'
+    var GMAPS_STATIC_URL = 'http://maps.google.com/maps/api/staticmap'
     var _instance = null;
     var _instance_markers = [];
 

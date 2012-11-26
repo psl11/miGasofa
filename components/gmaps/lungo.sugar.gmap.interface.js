@@ -24,8 +24,10 @@ Lungo.Sugar.GMap.Interface = (function(lng, undefined) {
     };
 
 	var Map = function(element, options) {
-        if (options.type) options.mapTypeId = MAP_TYPES[options.type];
-        if (options.center) options.center = new google.maps.LatLng(options.center.latitude, options.center.longitude);
+        if (options.type) 
+            options.mapTypeId = MAP_TYPES[options.type];
+        if (options.center) 
+            options.center = new google.maps.LatLng(options.center.latitude, options.center.longitude);
 
         return new google.maps.Map(element, lng.Core.mix(OPTIONS, options));
     };
